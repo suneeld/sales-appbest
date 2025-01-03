@@ -1,0 +1,155 @@
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.landing-page-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: black;
+  cursor: pointer;
+}
+
+.landing-page-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the entire screen */
+}
+
+.fog-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.2),
+    rgba(0, 0, 0, 0.8)
+  );
+  pointer-events: none; /* Allows clicking to pass through */
+  animation: fog 5s infinite alternate;
+}
+
+@keyframes fog {
+  0% {
+    opacity: 0.8;
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(-5%) translateY(-5%);
+  }
+  100% {
+    opacity: 0.8;
+    transform: translateX(5%) translateY(5%);
+  }
+}
+
+.landing-page-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: black;
+    cursor: pointer;
+  }
+  
+  .landing-page-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* .landing-page-text {
+    position: absolute;
+    top: 65%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
+    animation: pulse-glow 2s infinite;
+    font-family: "Helvetica", "Arial", sans-serif;
+    letter-spacing: 2px;
+    white-space: nowrap; /* Prevent text wrapping */
+ /* } */
+  
+ .landing-page-text {
+  position: absolute;
+  top: 75%; /* Move text closer to the bottom */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Ensure precise centering */
+  font-size: 4vw; /* Responsive font size */
+  color: #c0c0c0; /* Light silver */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
+  animation: pulse-glow 2s infinite;
+  font-family: "Helvetica", "Arial", sans-serif;
+  letter-spacing: 2px;
+  white-space: nowrap; /* Prevent wrapping */
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .landing-page-text {
+    font-size: 6vw; /* Increase font size for smaller screens */
+    top: 78%; /* Adjust positioning for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-page-text {
+    font-size: 8vw; /* Further increase font size for mobile */
+    top: 80%; /* Adjust positioning for mobile */
+  }
+}
+
+
+  @keyframes pulse-glow {
+    0% {
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
+    }
+    50% {
+      text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.8);
+    }
+    100% {
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
+    }
+  }
+  .ask-coach-text {
+    position: absolute;
+    bottom: 10%; /* Align below the tie */
+    left: 50%;
+    transform: translate(-50%, 0);
+    color: #c0c0c0; /* Light silver */
+    font-size: 1.5em; /* Adjust font size based on screen size */
+    font-family: 'Arial', sans-serif; /* Optional: Use a clean, professional font */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6); /* Adds depth and visibility */
+    white-space: nowrap; /* Prevents text wrapping */
+}
+
+@media screen and (max-width: 768px) {
+  .ask-coach-text {
+      font-size: 1.2em; /* Reduce font size for smaller screens */
+      bottom: 8%; /* Slightly adjust position */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ask-coach-text {
+      font-size: 1em; /* Further reduce font size for very small screens */
+      bottom: 6%;
+  }
+}

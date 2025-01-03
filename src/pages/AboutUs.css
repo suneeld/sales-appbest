@@ -1,0 +1,91 @@
+/* General resets and body styling */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f6f8; /* Updated background color */
+  overflow-y: auto;
+}
+
+.aboutus-container {
+  padding: 2rem;
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+}
+
+.mission-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  margin-top: 80px; /* Add margin to account for fixed Navbar height */
+}
+
+.mission-section h1 {
+  font-size: 2.5rem;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+}
+
+.mission-section p {
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.leadership-section {
+  margin-bottom: 3rem;
+}
+
+.leadership-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #1a1a1a;
+  margin-bottom: 2rem;
+}
+
+.leaders {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.leader-card {
+  text-align: center;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  max-width: 200px;
+}
+
+.leader-card img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1rem;
+}
+
+.leader-card h3 {
+  font-size: 1.25rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.leader-card p {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.leader-card a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.quote-section {
+  background-color: #f5f5f5;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  font-style: italic;
+  color: #444;
+}

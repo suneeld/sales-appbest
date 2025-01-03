@@ -1,0 +1,119 @@
+
+/* General resets */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  background-color: #f7fafc;
+  overflow-y: auto;
+}
+
+.vct-container {
+  padding: 20px;
+}
+
+.vct-hero {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin: 80px auto 40px auto; /* Fixed Navbar height and margin consistency */
+  max-width: 1100px;
+}
+
+.vct-heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.vct-paragraph {
+  font-size: 1.2rem;
+  color: #555;
+  margin: 15px 0;
+}
+
+.vct-cta-button {
+  display: inline-block; /* Inline-block for better alignment */
+  margin: 20px auto; /* Centers the button horizontally */
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  color: white;
+  background-color: #0073e6;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.vct-cta-button:hover {
+  background-color: #005bb5;
+}
+
+.vct-section {
+  text-align: center;
+  margin: 40px auto; /* Consistent spacing between sections */
+  max-width: 1100px;
+  padding: 20px; /* Added padding for section content */
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.vct-subheading {
+  font-size: 2rem;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+.vct-text {
+  font-size: 1.1rem;
+  color: #555;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.vct-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.vct-list li {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.vct-cta {
+  text-align: center;
+  margin: 60px auto; /* Consistent margin across sections */
+  padding: 20px; /* Added padding for the CTA */
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  max-width: 1100px;
+}
+
+.vct-cta-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.vct-cta-text {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.vct-button-wrapper {
+  text-align: center;
+  margin-top: 20px;
+}

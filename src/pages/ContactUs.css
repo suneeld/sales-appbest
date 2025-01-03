@@ -1,0 +1,77 @@
+/* General resets and body styling */
+body, html, #root {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f6f8; /* Updated background color */
+    overflow-y: auto;
+  }
+
+.contactus-container {
+    padding: 2rem;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  .contactus-container h1 {
+    font-size: 2.5rem;
+    color: #1a202c;
+    margin-bottom: 1rem;
+  }
+  
+  .contactus-container p {
+    font-size: 1.2rem;
+    color: #4a5568;
+  }
+  
+  .email-link {
+    font-size: 1.2rem;
+    color: #3182ce;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    display: block;
+  }
+  
+  .email-link:hover {
+    text-decoration: underline;
+  }
+  
+  .contact-form {
+    margin: 2rem auto;
+    max-width: 500px;
+    text-align: left;
+  }
+  
+  .contact-form label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #4a5568;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .contact-form .submit-button {
+    background-color: #3182ce;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .contact-form .submit-button:hover {
+    background-color: #2b6cb0;
+  }
+  

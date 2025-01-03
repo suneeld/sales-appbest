@@ -1,0 +1,161 @@
+/* General resets */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  background-color: #f7fafc;
+  overflow-y: auto;
+}
+
+/* Product Container */
+.product-container {
+  position: relative;
+}
+
+/* Product Content */
+.product-content {
+  margin-top: 60px; /* Matches NavBar height */
+  padding: 20px;
+}
+
+/* Hero Section */
+.hero-section {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-bottom: 40px;
+  margin-left: auto; /* Ensures alignment */
+  margin-right: auto; /* Centers content */
+  max-width: 1200px; /* Limits width for consistent layout */
+}
+
+
+.hero-heading {
+  font-size: 2.8rem;
+  color: #1a202c;
+}
+
+.hero-paragraph {
+  font-size: 1.2rem;
+  color: #4a5568;
+  margin-top: 15px;
+}
+
+.cta-button {
+  margin-top: 20px;
+  padding: 15px 30px;
+  background-color: #3182ce;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #2b6cb0;
+}
+
+/* Features Section */
+/* Features Section */
+.features-section {
+  text-align: center;
+  margin-top: 50px;
+  padding: 0 20px; /* Adds consistent padding for responsiveness */
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted min size for better alignment */
+  gap: 30px; /* Increased gap for visual clarity */
+}
+
+.section-heading {
+  font-size: 2rem;
+  color: #2d3748;
+  margin-bottom: 20px;
+}
+
+
+.feature-card {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.feature-title {
+  font-size: 1.5rem;
+  color: #2d3748;
+  margin-bottom: 10px;
+}
+
+.feature-description {
+  font-size: 1rem;
+  color: #718096;
+}
+
+/* Value Section */
+.value-section {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-top: 40px;
+  margin-left: auto; /* Aligns center */
+  margin-right: auto; /* Aligns center */
+  max-width: 1200px; /* Ensures consistent width */
+}
+.value-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.value-list li {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #4a5568;
+}
+
+/* CTA Section */
+.cta-section {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #3182ce;
+  color: white;
+  border-radius: 10px;
+  margin-top: 50px;
+  margin-left: auto; /* Centers content */
+  margin-right: auto; /* Centers content */
+  max-width: 1200px; /* Ensures consistent layout */
+}
+
+.cta-heading {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.cta-section button {
+  padding: 15px 30px;
+  background-color: #ffffff;
+  color: #3182ce;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-section button:hover {
+  background-color: #2b6cb0;
+  color: white;
+}
