@@ -22,7 +22,7 @@ This is a React-based frontend application that demonstrates advanced feature fl
 
 ```bash
 git clone https://github.com/suneeld/sales-appbest.git
-cd sales-appbest/webapp
+cd sales-appbest
 ```
 
 > _Make sure Docker is installed and running on your machine._
