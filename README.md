@@ -1,7 +1,7 @@
 
-# 🚀 Sales App Best — Feature Flag & Observability Demo
+# 🚀 Sales App Best — LaunchDarkly Feature Flag, Experimentation & Grafana Integration Demo.
 
-This is a React-based frontend application that demonstrates advanced feature flagging with **LaunchDarkly** and frontend monitoring with **Grafana Faro**.
+This is a React-based frontend application that demonstrates advanced feature flagging & experimentation with **LaunchDarkly** and frontend monitoring and LaunchDarkly integration with **Grafana Faro**.
 
 ---
 
@@ -10,7 +10,7 @@ This is a React-based frontend application that demonstrates advanced feature fl
 - ⚛️ React 18 (SPA)
 - 🐳 Docker & Docker Compose
 - 🏁 React Router v6
-- 🚩 LaunchDarkly (Feature Management & Experiments)
+- 🚩 LaunchDarkly (Feature Management, Experiments & Integration)
 - 📊 Grafana Faro (Frontend Monitoring)
 - 💡 TailwindCSS, Framer Motion, Axios
 
@@ -60,7 +60,7 @@ Once running, you can test key flows using the following pages:
 
 If you’ve been added to the **LaunchDarkly Team**, log in at:
 
-👉 [https://app.launchdarkly.com](https://app.launchdarkly.com)
+https://app.launchdarkly.com
 
 Then **enable or disable the following flags** to control app behavior in real time:
 
