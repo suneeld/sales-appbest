@@ -1,65 +1,30 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "../components/Navbar";
 import "./Home.css";
-import * as LDClient from "launchdarkly-js-client-sdk"; //launchdarkly sdk//
+import { useFlags, useLDClient } from "launchdarkly-react-client-sdk"; // ✅ React SDK hooks
 
 const HomePage = () => {
-  const [customText, setCustomText] = useState('');
+  const [customText, setCustomText] = useState("");
   const [featureEnabled, setFeatureEnabled] = useState(false);
   const [exploreFeatureEnabled, setExploreFeatureEnabled] = useState(false);
-  const [ldClient, setLdClient] = useState(null);
+
+  const { landingpage, explorefeature } = useFlags(); // ✅ Load flags via context
+  const ldClient = useLDClient(); // ✅ LD client instance
 
   useEffect(() => {
-    const clientSideID = "67ece628f328ed0982560843"; //LD clientsiteid //
-
-    // Detect browser
-    const browser = (() => {
-      const ua = navigator.userAgent;
-      if (ua.includes("Safari") && !ua.includes("Chrome")) return "Safari";
-      if (ua.includes("Chrome")) return "Chrome";
-      if (ua.includes("Firefox")) return "Firefox";
-      return "Other";
-    })();
-
-    // Detect device
-    const device = navigator.platform.toLowerCase().includes("mac") ? "Macbook" : "Other";
-
-    const context = {
-      kind: "user",
-      key: `user-${crypto.randomUUID()}`,
-      anonymous: true,
-      browser,
-      device,
-    }; // LD context //
-
-    console.log("LD Context (HomePage):", context);
-
-    const client = LDClient.initialize(clientSideID, context);
-    setLdClient(client);
-
-    client.on("ready", async () => {
-      console.log(" LD SDK ready (HomePage)");
-
-      const landingFlag = await client.variation("landingpage", false); //LD flag landingpage //
-      const exploreFlag = await client.variation("explorefeature", false); //LD flag explorefeature //
-
-      console.log("🚀 landingpage flag:", landingFlag);
-      console.log("🧪 explorefeature flag:", exploreFlag);
-
-      setFeatureEnabled(landingFlag);
-      setExploreFeatureEnabled(exploreFlag);
-    });
-
+    console.log("🧠 Flags from context → landingpage:", landingpage, ", explorefeature:", explorefeature);
+    setFeatureEnabled(landingpage);
+    setExploreFeatureEnabled(explorefeature);
     setCustomText("I need help with sales strategies to address pipeline inefficiencies.");
-  }, []);
+  }, [landingpage, explorefeature]);
 
   const handleTryNewFlowClick = () => {
     if (ldClient) {
       ldClient.track("explorefeaturebutton");
-      console.log("Tracked: explorefeaturebutton");
+      console.log("📊 Metric tracked: explorefeaturebutton");
     }
     window.location.href = "https://app.bestsalescoach.ai";
-  }; // LD metric tracking explorefeaturebutton  //
+  };
 
   return (
     <div className="home-container">

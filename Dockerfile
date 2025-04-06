@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm install --legacy-peer-deps
 
 # Install Tailwind CSS and AJV globally if required
-RUN npm install -g tailwindcss ajv
+RUN npm install -g tailwindcss ajv launchdarkly-react-client-sdk
 
 # Copy the application source code
 COPY . .

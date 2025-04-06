@@ -8,7 +8,14 @@ import {
 } from '@grafana/faro-react';
 import { TracingInstrumentation } from '@grafana/faro-web-tracing';
 
+let isFaroInitialized = false; // 🛡️ Prevent duplicate initialization
+
 export const initFaro = () => {
+  if (isFaroInitialized) {
+    console.warn("Faro is already initialized.");
+    return;
+  }
+
   initializeFaro({
     url: 'https://faro-collector-prod-au-southeast-1.grafana.net/collect/ffeada76367f2c9ccdf21b78334cf831',
     app: {
@@ -26,4 +33,6 @@ export const initFaro = () => {
       }),
     ],
   });
+
+  isFaroInitialized = true; // ✅ Set flag once initialized
 };

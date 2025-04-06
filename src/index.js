@@ -2,19 +2,49 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { initFaro } from './utils/faroInit'; // Import your Faro init //
+import { initFaro } from './utils/faroInit';
+import { withLDProvider } from 'launchdarkly-react-client-sdk';
 
-initFaro(); // Initialize Grafana Faro //
+initFaro(); // Initialize Grafana Faro
+
+// Detect browser/device for context
+const ua = navigator.userAgent;
+const browserName = ua.includes("Chrome") && !ua.includes("Edg")
+  ? "Chrome"
+  : ua.includes("Safari") && !ua.includes("Chrome")
+  ? "Safari"
+  : ua.includes("Firefox")
+  ? "Firefox"
+  : "Other";
+
+const device = navigator.platform.toLowerCase().includes("mac") ? "Macbook" : "Other";
+
+// Correct context setup with real browser name
+const context = {
+  kind: "multi",
+  user: {
+    key: `user-${crypto.randomUUID()}`,
+    anonymous: true
+  },
+  browser: {
+    key: `browser-${browserName}`,
+    name: browserName
+  }
+};
+
+console.log("🧠 LD Context", context);
+
+const LDApp = withLDProvider({
+  clientSideID: "67ece628f328ed0982560843",
+  context,
+  reactOptions: {
+    useCamelCaseFlagKeys: false
+  }
+})(App);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <LDApp />
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
