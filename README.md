@@ -52,6 +52,7 @@ Once running, you can test key flows using the following pages:
 | [localhost:8080/usecases](http://localhost:8080/usecases) | Use Cases |
 | [localhost:8080/valuecreationteams](http://localhost:8080/valuecreationteams) | Value Creation Teams |
 | [localhost:8080/aboutus](http://localhost:8080/aboutus) | About Us |
+| [localhost:8080/simulate](http://localhost:8080/simulate)| simulate |
 
 ---
 
@@ -73,11 +74,12 @@ Then **enable or disable the following flags** to control app behavior in real t
 
 ## 🧪 Experimentation & Metrics
 
-You can simulate users and test LaunchDarkly experiments using:
+You can simulate users and test LaunchDarkly experiments using buttons on http://localhost:8080/simulate:
 
 - `Try New Flow` button (Homepage)
 - `Explore Features` button (Value Creation Teams)
 - `Value Creation Teams` menu click tracking
+-  Change duration of tests between 1 to 60 minutes.
 
 The metrics `explorefeaturebutton` and `valuepagecount` are tracked and viewable within LaunchDarkly experiments UI.
 
