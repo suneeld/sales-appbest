@@ -83,6 +83,7 @@ You can simulate users and test LaunchDarkly experiments using buttons on http:/
 
 The metrics `explorefeaturebutton` and `valuepagecount` are tracked and viewable within LaunchDarkly experiments UI.
 
+
 ---
 
 ## 📈 Grafana Integration
@@ -101,6 +102,7 @@ Reach out to your team to either get access or screenshots of the **Grafana Clou
 2. **Frontend Dashboard**
    - Home → Dashboards → `Frontend`
    - Tracks user sessions, page visits, and frontend errors (from Faro SDK).
+<img width="694" alt="Screen Shot 2025-04-06 at 1 14 05 pm" src="https://github.com/user-attachments/assets/40ae407b-e640-4712-a6a2-e449085ac909" />
 
 ---
 
