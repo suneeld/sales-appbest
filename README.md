@@ -104,7 +104,8 @@ Choose the appropriate button to begin simulation:
 These metrics can be viewed in the LaunchDarkly Experiments UI under the associated experiment configuration.
 
 
-<img width="694" alt="Screen Shot 2025-04-06 at 1 14 05 pm" src="https://github.com/user-attachments/assets/40ae407b-e640-4712-a6a2-e449085ac909" />
+<img width="698" alt="Screen Shot 2025-04-06 at 4 03 53 pm" src="https://github.com/user-attachments/assets/447eac69-ebfe-4e0f-b54b-2614c45eefb3" />
+
 
 ---
 
