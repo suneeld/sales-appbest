@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import * as LDClient from "launchdarkly-js-client-sdk";
+import * as LDClient from "launchdarkly-js-client-sdk"; // launchdarkly js-client-sdk //
 import askCoachImage from "../assets/ask-coach.jpg";
 import BackaskCoachImage from "../assets/Back ask-coach.jpg";
 import NewCoachImage from "../assets/newcoach.png";
@@ -12,9 +12,9 @@ const LandingPage = () => {
   const [imageToShow, setImageToShow] = useState(null);
 
   useEffect(() => {
-    const clientSideID = "67ece628f328ed0982560843";
+    const clientSideID = "67ece628f328ed0982560843"; //launchdarkly clientsiteid //
 
-    // Detect browser
+    // Detect browser //
     const browser = (() => {
       const ua = navigator.userAgent;
       if (ua.includes("Safari") && !ua.includes("Chrome")) return "Safari";
@@ -23,21 +23,21 @@ const LandingPage = () => {
       return "Other";
     })();
 
-    // Detect device type (simplified to just Macbook for demo)
+    // Detect device type type mac //
     const isMac = navigator.platform.toLowerCase().includes("mac");
 
-    const context = {
+    const context = { //LD Context //
       kind: "user",
-      key: `user-${crypto.randomUUID()}`, // simulate user ID
+      key: `user-${crypto.randomUUID()}`, // simulate user ID //
       anonymous: true,
       browser: browser,
       device: isMac ? "Macbook" : "Other"
     };
 
-    const ldClient = LDClient.initialize(clientSideID, context);
+    const ldClient = LDClient.initialize(clientSideID, context); //Init LD Client //
 
     ldClient.on("ready", () => {
-      const flagValue = ldClient.variation("askcoachimg", false);
+      const flagValue = ldClient.variation("askcoachimg", false); // askcoachimg flag//
 
       if (flagValue) {
         if (browser === "Safari") {

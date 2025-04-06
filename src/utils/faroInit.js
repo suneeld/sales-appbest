@@ -6,9 +6,9 @@ import {
   ReactIntegration,
   getWebInstrumentations,
 } from '@grafana/faro-react';
-import { TracingInstrumentation } from '@grafana/faro-web-tracing';
+import { TracingInstrumentation } from '@grafana/faro-web-tracing'; //grafana web tracing //
 
-let isFaroInitialized = false; // 🛡️ Prevent duplicate initialization
+let isFaroInitialized = false; // Prevent duplicate initialization //
 
 export const initFaro = () => {
   if (isFaroInitialized) {
@@ -34,5 +34,5 @@ export const initFaro = () => {
     ],
   });
 
-  isFaroInitialized = true; // ✅ Set flag once initialized
+  isFaroInitialized = true; // Set flag once initialized //
 };

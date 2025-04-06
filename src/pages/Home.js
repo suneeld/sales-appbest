@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "../components/Navbar";
 import "./Home.css";
-import { useFlags, useLDClient } from "launchdarkly-react-client-sdk"; // ✅ React SDK hooks
+import { useFlags, useLDClient } from "launchdarkly-react-client-sdk"; //LaunchDarkly react client SDK//
 
 const HomePage = () => {
   const [customText, setCustomText] = useState("");
   const [featureEnabled, setFeatureEnabled] = useState(false);
   const [exploreFeatureEnabled, setExploreFeatureEnabled] = useState(false);
 
-  const { landingpage, explorefeature } = useFlags(); // ✅ Load flags via context
-  const ldClient = useLDClient(); // ✅ LD client instance
+  const { landingpage, explorefeature } = useFlags(); // Load flags via context //
+  const ldClient = useLDClient(); // LD client instance //
 
   useEffect(() => {
-    console.log("🧠 Flags from context → landingpage:", landingpage, ", explorefeature:", explorefeature);
+    console.log(" Flags from context → landingpage:", landingpage, ", explorefeature:", explorefeature);
     setFeatureEnabled(landingpage);
     setExploreFeatureEnabled(explorefeature);
     setCustomText("I need help with sales strategies to address pipeline inefficiencies.");
@@ -20,8 +20,8 @@ const HomePage = () => {
 
   const handleTryNewFlowClick = () => {
     if (ldClient) {
-      ldClient.track("explorefeaturebutton");
-      console.log("📊 Metric tracked: explorefeaturebutton");
+      ldClient.track("explorefeaturebutton"); //metric tracked //
+      console.log(" Metric tracked: explorefeaturebutton");
     }
     window.location.href = "https://app.bestsalescoach.ai";
   };

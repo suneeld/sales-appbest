@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { initFaro } from './utils/faroInit';
-import { withLDProvider } from 'launchdarkly-react-client-sdk';
+import { withLDProvider } from 'launchdarkly-react-client-sdk'; //LaunchDarkly react client SDK//
 
-initFaro(); // Initialize Grafana Faro
+initFaro(); // Init Grafana Faro //
 
-// Detect browser/device for context
+// Detect browser/device for context //
 const ua = navigator.userAgent;
 const browserName = ua.includes("Chrome") && !ua.includes("Edg")
   ? "Chrome"
@@ -19,8 +19,8 @@ const browserName = ua.includes("Chrome") && !ua.includes("Edg")
 
 const device = navigator.platform.toLowerCase().includes("mac") ? "Macbook" : "Other";
 
-// Correct context setup with real browser name
-const context = {
+
+const context = { // context setup with browser name //
   kind: "multi",
   user: {
     key: `user-${crypto.randomUUID()}`,
@@ -32,7 +32,7 @@ const context = {
   }
 };
 
-console.log("🧠 LD Context", context);
+console.log("LD Context", context);
 
 const LDApp = withLDProvider({
   clientSideID: "67ece628f328ed0982560843",

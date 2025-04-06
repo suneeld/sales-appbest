@@ -1,11 +1,11 @@
 import React from "react";
 import NavBar from "../components/Navbar";
-import { useFlags, useLDClient } from "launchdarkly-react-client-sdk";
+import { useFlags, useLDClient } from "launchdarkly-react-client-sdk"; //LaunchDarkly react client SDK//
 import "./ValueCreationTeams.css";
 
 const ValueCreationTeams = () => {
-  const { explorefeature } = useFlags(); // Get flag from global context
-  const ldClient = useLDClient(); // Access LD client for tracking
+  const { explorefeature } = useFlags(); //  flag from  context //
+  const ldClient = useLDClient(); // Access LD client  //
 
   return (
     <div className="vct-container">
@@ -23,8 +23,8 @@ const ValueCreationTeams = () => {
               className="vct-cta-button"
               onClick={() => {
                 if (ldClient) {
-                  ldClient.track("explorefeaturebutton");
-                  console.log("📊 Tracked: explorefeaturebutton");
+                  ldClient.track("explorefeaturebutton"); // metric tracked //
+                  console.log("Tracked: explorefeaturebutton");
                 }
                 window.location.href = "https://app.bestsalescoach.ai";
               }}

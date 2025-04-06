@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useFlags, useLDClient } from "launchdarkly-react-client-sdk";
+import { useFlags, useLDClient } from "launchdarkly-react-client-sdk"; //LaunchDarkly react client SDK//
 import "./Navbar.css";
 import logo from "../assets/bestsalecoachlogo.jpg";
 
@@ -9,9 +9,9 @@ const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const { valuepage } = useFlags(); // Automatically reads the flag from LD context
-  const ldClient = useLDClient();   // Get the LD client instance
-  console.log("🚦 LD Flag valuepage:", valuepage);
+  const { valuepage } = useFlags(); // Automatically reads the flag from LD context//
+  const ldClient = useLDClient();   // Get the LD client instance //
+  console.log("LD Flag valuepage:", valuepage);
 
   const handleLogoDoubleClick = () => {
     navigate("/home");
@@ -23,8 +23,8 @@ const Navbar = () => {
 
   const handleValueMenuClick = () => {
     if (ldClient) {
-      ldClient.track("valuepagecount"); // Track metric when menu is clicked
-      console.log("📈 Metric tracked: valuepagecount");
+      ldClient.track("valuepagecount"); // Track metric when menu is clicked //
+      console.log(" Metric tracked: valuepagecount");
     }
   };
 
@@ -40,7 +40,7 @@ const Navbar = () => {
         <Link to="/product" className="nav-menu-item">Product</Link>
         <Link to="/usecases" className="nav-menu-item">Use Cases</Link>
 
-        {valuepage && (
+        {valuepage && ( //When valuepage flag is enabled //
           <Link
             to="/valuecreationteams"
             className="nav-menu-item"
