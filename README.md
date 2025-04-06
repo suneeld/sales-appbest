@@ -76,13 +76,18 @@ Then **enable or disable the following flags** to control app behavior in real t
 
 You can simulate users and test LaunchDarkly experiments using buttons on http://localhost:8080/simulate:
 
+-  Change duration of tests between 1 to 60 minutes.
+  
+Use Start Testing Explore Feature button for-
 - `Try New Flow` button (Homepage)
 - `Explore Features` button (Value Creation Teams)
+  
+Use Start Testing ValueCreation Teams Menu button for-
 - `Value Creation Teams` menu click tracking
--  Change duration of tests between 1 to 60 minutes.
 
 The metrics `explorefeaturebutton` and `valuepagecount` are tracked and viewable within LaunchDarkly experiments UI.
 
+<img width="694" alt="Screen Shot 2025-04-06 at 1 14 05 pm" src="https://github.com/user-attachments/assets/40ae407b-e640-4712-a6a2-e449085ac909" />
 
 ---
 
@@ -102,7 +107,7 @@ Reach out to your team to either get access or screenshots of the **Grafana Clou
 2. **Frontend Dashboard**
    - Home → Dashboards → `Frontend`
    - Tracks user sessions, page visits, and frontend errors (from Faro SDK).
-<img width="694" alt="Screen Shot 2025-04-06 at 1 14 05 pm" src="https://github.com/user-attachments/assets/40ae407b-e640-4712-a6a2-e449085ac909" />
+
 
 ---
 
