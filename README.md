@@ -74,18 +74,30 @@ Then **enable or disable the following flags** to control app behavior in real t
 
 ## 🧪 Experimentation & Metrics
 
-You can simulate users and test LaunchDarkly experiments using buttons on http://localhost:8080/simulate:
+You can simulate users and test LaunchDarkly experiments using the buttons available at:
+http://localhost:8080/simulate
 
--  Change duration of tests between 1 to 60 minutes.
-  
-Use Start Testing Explore Feature button for-
-- `Try New Flow` button (Homepage)
-- `Explore Features` button (Value Creation Teams)
-  
-Use Start Testing ValueCreation Teams Menu button for-
-- `Value Creation Teams` menu click tracking
+Instructions:
 
-The metrics `explorefeaturebutton` and `valuepagecount` are tracked and viewable within LaunchDarkly experiments UI.
+Start the required experiment via the LaunchDarkly UI before initiating tests.
+
+Adjust the test duration between 1 to 60 minutes based on your experiment needs.
+
+Use the Start Testing Explore Feature button to simulate clicks on:
+Try New Flow button (on the Homepage)
+
+Explore Features button (on the Value Creation Teams page)
+
+Use the Start Testing Value Creation Teams Menu button to simulate:
+Clicks on the Value Creation Teams menu item in the navigation bar
+
+LaunchDarkly will track the following metrics:
+
+explorefeaturebutton
+
+valuepagecount
+
+These metrics are viewable within the LaunchDarkly Experiments UI under the associated experiment configuration.
 
 <img width="694" alt="Screen Shot 2025-04-06 at 1 14 05 pm" src="https://github.com/user-attachments/assets/40ae407b-e640-4712-a6a2-e449085ac909" />
 
