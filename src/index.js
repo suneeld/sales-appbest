@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { initFaro } from './utils/faroInit'; // Import your Faro init //
+
+initFaro(); // Initialize Grafana Faro //
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

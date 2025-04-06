@@ -164,4 +164,24 @@ body, html, #root {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
   }
+  #did-agent-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 300px; /* Adjust based on agent's expected size */
+    height: 400px; /* Adjust based on agent's expected size */
+    background-color: rgba(255, 255, 255, 0.9); /* Add a visible background */
+    border: 1px solid #ccc; /* Optional border for visibility */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (max-width: 768px) {
+    .did-agent-container {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+    }
+}
   

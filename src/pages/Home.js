@@ -1,42 +1,115 @@
-
-import React, { useEffect } from "react";
-import NavBar from "../components/Navbar"; 
-import "./Home.css"; 
+import React, { useState, useEffect } from "react";
+import NavBar from "../components/Navbar";
+import "./Home.css";
+import * as LDClient from "launchdarkly-js-client-sdk"; //launchdarkly sdk//
 
 const HomePage = () => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.type = "module";
-    script.src = "https://agent.d-id.com/v1/index.js";
-    script.setAttribute("data-name", "did-agent");
-    script.setAttribute("data-mode", "fabio");
-    script.setAttribute("data-client-key", "YXV0aDB8Njc5ZGQwNWY0ZWU1NGU5NzE1MjgwOnJ6MkFBc29qZ3NINXQwRkZTNS1RQg==");
-    script.setAttribute("data-agent-id", "agt_D1vqm_He");
-    script.setAttribute("data-monitor", "true");
-    document.body.appendChild(script);
+  const [customText, setCustomText] = useState('');
+  const [featureEnabled, setFeatureEnabled] = useState(false);
+  const [exploreFeatureEnabled, setExploreFeatureEnabled] = useState(false);
+  const [ldClient, setLdClient] = useState(null);
 
-    return () => {
-      document.body.removeChild(script); // Cleanup to prevent duplicates
-    };
+  useEffect(() => {
+    const clientSideID = "67ece628f328ed0982560843"; //LD clientsiteid //
+
+    // Detect browser
+    const browser = (() => {
+      const ua = navigator.userAgent;
+      if (ua.includes("Safari") && !ua.includes("Chrome")) return "Safari";
+      if (ua.includes("Chrome")) return "Chrome";
+      if (ua.includes("Firefox")) return "Firefox";
+      return "Other";
+    })();
+
+    // Detect device
+    const device = navigator.platform.toLowerCase().includes("mac") ? "Macbook" : "Other";
+
+    const context = {
+      kind: "user",
+      key: `user-${crypto.randomUUID()}`,
+      anonymous: true,
+      browser,
+      device,
+    }; // LD context //
+
+    console.log("LD Context (HomePage):", context);
+
+    const client = LDClient.initialize(clientSideID, context);
+    setLdClient(client);
+
+    client.on("ready", async () => {
+      console.log(" LD SDK ready (HomePage)");
+
+      const landingFlag = await client.variation("landingpage", false); //LD flag landingpage //
+      const exploreFlag = await client.variation("explorefeature", false); //LD flag explorefeature //
+
+      console.log("🚀 landingpage flag:", landingFlag);
+      console.log("🧪 explorefeature flag:", exploreFlag);
+
+      setFeatureEnabled(landingFlag);
+      setExploreFeatureEnabled(exploreFlag);
+    });
+
+    setCustomText("I need help with sales strategies to address pipeline inefficiencies.");
   }, []);
+
+  const handleTryNewFlowClick = () => {
+    if (ldClient) {
+      ldClient.track("explorefeaturebutton");
+      console.log("Tracked: explorefeaturebutton");
+    }
+    window.location.href = "https://app.bestsalescoach.ai";
+  }; // LD metric tracking explorefeaturebutton  //
 
   return (
     <div className="home-container">
       <NavBar />
 
+      {/* Top Menu Section */}
+      <div className="top-menu">
+        <ul className="menu-list">
+          <li>Product</li>
+          <li>Use Cases</li>
+          <li>About Us</li>
+        </ul>
+      </div>
+
       {/* Hero Section */}
       <div className="hero-section">
-        <h1 className="hero-heading">Best Sales Coach</h1>
-        <h1 className="hero-heading">Unlock Your Sales Potential</h1>
-        <p className="hero-paragraph">
-          Empower your sales teams with real-time insights, actionable strategies, and AI-driven execution frameworks.
-        </p>
-        <button 
-          className="cta-button" 
-          onClick={() => window.location.href = "https://app.bestsalescoach.ai"}
-        >
-          Start Your Journey
-        </button>
+        {featureEnabled ? (
+          <>
+            <h1 className="hero-heading">🚀 Welcome to the New Landing Experience</h1>
+            <p className="hero-paragraph">
+              You’re offered this because you are <strong>selected</strong> to try this!
+            </p>
+            <p className="hero-paragraph">
+              Discover how AI can take your pipeline efficiency and execution to new heights.
+            </p>
+
+            {exploreFeatureEnabled && (
+              <button className="cta-button" onClick={handleTryNewFlowClick}>
+                Try the New Flow
+              </button>
+            )}
+          </>
+        ) : (
+          <>
+            <h1 className="hero-heading">Best Sales Coach</h1>
+            <h1 className="hero-heading">Unlock Your Sales Potential</h1>
+            <p className="hero-paragraph">
+              Empower your sales teams with real-time insights, actionable strategies, and AI-driven execution frameworks.
+            </p>
+            <p className="hero-paragraph">
+              You’re seeing the default experience. Turn on the <strong>landingpage</strong> flag to preview the new flow.
+            </p>
+            <button
+              className="cta-button"
+              onClick={() => (window.location.href = "https://app.bestsalescoach.ai")}
+            >
+              Start Your Journey
+            </button>
+          </>
+        )}
       </div>
 
       {/* Features Section */}
@@ -79,9 +152,9 @@ const HomePage = () => {
       {/* Call to Action Section */}
       <div className="cta-section">
         <h2 className="section-heading">Ready to Transform Your Sales Team?</h2>
-        <button 
-          className="cta-button" 
-          onClick={() => window.location.href = "https://app.bestsalescoach.ai/demo"}
+        <button
+          className="cta-button"
+          onClick={() => (window.location.href = "https://app.bestsalescoach.ai/demo")}
         >
           Book a Demo
         </button>

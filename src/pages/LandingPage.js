@@ -1,14 +1,55 @@
-// src/pages/LandingPage.js
-// src/pages/LandingPage.js
-// src/pages/LandingPage.js
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import * as LDClient from "launchdarkly-js-client-sdk";
 import askCoachImage from "../assets/ask-coach.jpg";
+import BackaskCoachImage from "../assets/Back ask-coach.jpg";
+import NewCoachImage from "../assets/newcoach.png";
 import "./LandingPage.css";
 
 const LandingPage = () => {
   const navigate = useNavigate();
+  const [imageToShow, setImageToShow] = useState(null);
+
+  useEffect(() => {
+    const clientSideID = "67ece628f328ed0982560843";
+
+    // Detect browser
+    const browser = (() => {
+      const ua = navigator.userAgent;
+      if (ua.includes("Safari") && !ua.includes("Chrome")) return "Safari";
+      if (ua.includes("Chrome")) return "Chrome";
+      if (ua.includes("Firefox")) return "Firefox";
+      return "Other";
+    })();
+
+    // Detect device type (simplified to just Macbook for demo)
+    const isMac = navigator.platform.toLowerCase().includes("mac");
+
+    const context = {
+      kind: "user",
+      key: `user-${crypto.randomUUID()}`, // simulate user ID
+      anonymous: true,
+      browser: browser,
+      device: isMac ? "Macbook" : "Other"
+    };
+
+    const ldClient = LDClient.initialize(clientSideID, context);
+
+    ldClient.on("ready", () => {
+      const flagValue = ldClient.variation("askcoachimg", false);
+
+      if (flagValue) {
+        if (browser === "Safari") {
+          setImageToShow(BackaskCoachImage);
+        } else if (browser === "Chrome" && isMac) {
+          setImageToShow(NewCoachImage);
+        } else {
+          setImageToShow(askCoachImage);
+        }
+      }
+    });
+  }, []);
 
   const handleClick = () => {
     navigate("/home");
@@ -22,14 +63,17 @@ const LandingPage = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      <motion.img
-        src={askCoachImage}
-        alt="Ask Coach"
-        className="landing-page-image"
-        initial={{ scale: 1.1 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 2 }}
-      />
+      {imageToShow && (
+        <motion.img
+          src={imageToShow}
+          alt="Ask Coach"
+          className="landing-page-image"
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 2 }}
+        />
+      )}
+
       <motion.div
         className="landing-page-text"
         initial={{ y: -50, opacity: 0 }}

@@ -1,70 +1,113 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 🚀 Sales App Best — Feature Flag & Observability Demo
 
-## Available Scripts
+This is a React-based frontend application that demonstrates advanced feature flagging with **LaunchDarkly** and frontend monitoring with **Grafana Faro**.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🔧 Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- ⚛️ React 18 (SPA)
+- 🐳 Docker & Docker Compose
+- 🏁 React Router v6
+- 🚩 LaunchDarkly (Feature Management & Experiments)
+- 📊 Grafana Faro (Frontend Monitoring)
+- 💡 TailwindCSS, Framer Motion, Axios
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 📦 Clone and Run the App
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### ✅ Step 1: Clone the Repository
 
-### `npm run build`
+```bash
+git clone https://github.com/suneeld/sales-appbest.git
+cd sales-appbest
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> _Make sure Docker is installed and running on your machine._
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 🐳 Step 2: Run Using Docker Compose
 
-### `npm run eject`
+```bash
+docker-compose up --build
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+This will:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Install all required dependencies (including **LaunchDarkly SDK** & **Grafana Faro SDK**)
+- Expose the app on `http://localhost:8080`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🌐 Access the App Locally
 
-## Learn More
+Once running, you can test key flows using the following pages:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+| Route | Description |
+|-------|-------------|
+| [localhost:8080/home](http://localhost:8080/home) | Homepage |
+| [localhost:8080/usecases](http://localhost:8080/usecases) | Use Cases |
+| [localhost:8080/valuecreationteams](http://localhost:8080/valuecreationteams) | Value Creation Teams |
+| [localhost:8080/aboutus](http://localhost:8080/aboutus) | About Us |
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## 🚩 Enable/Disable LaunchDarkly Flags
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+If you’ve been added to the **LaunchDarkly Team**, log in at:
 
-### Analyzing the Bundle Size
+👉 [https://app.launchdarkly.com](https://app.launchdarkly.com)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Then **enable or disable the following flags** to control app behavior in real time:
 
-### Making a Progressive Web App
+| Flag Key | Description |
+|----------|-------------|
+| `exploregrafana` | ✅ Enables or disables Grafana Faro monitoring |
+| `explorefeatureflag` | Toggles **Try New Flow** (on Homepage) and **Explore Features** (on VCT page) |
+| `valuepage` | Toggles **Value Creation Teams** menu visibility |
+| `askcoachimg` | Switches between Safari- and Chrome-specific images on the Landing Page |
+| `landingpage` | Toggles **new experience banner** and CTA on the homepage |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🧪 Experimentation & Metrics
 
-### Advanced Configuration
+You can simulate users and test LaunchDarkly experiments using:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- `Try New Flow` button (Homepage)
+- `Explore Features` button (Value Creation Teams)
+- `Value Creation Teams` menu click tracking
 
-### Deployment
+The metrics `explorefeaturebutton` and `valuepagecount` are tracked and viewable within LaunchDarkly experiments UI.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## 📈 Grafana Integration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+When `exploregrafana` flag is enabled and traffic is active:
+
+### Step 1: Request Access
+Reach out to your team to either get access or screenshots of the **Grafana Cloud Controller** dashboard.
+
+### Step 2: Dashboards to Monitor
+
+1. **LaunchDarkly_FeatureFlags**
+   - Home → Dashboards → `LaunchDarkly_FeatureFlags`
+   - Shows real-time annotations and experiment events.
+
+2. **Frontend Dashboard**
+   - Home → Dashboards → `Frontend`
+   - Tracks user sessions, page visits, and frontend errors (from Faro SDK).
+
+---
+
+## 📬 Need Help?
+
+Feel free to raise issues or reach out to the repo maintainer for support configuring new flags, dashboards, or simulations.
+
+---
+
+## 📄 License
+
+MIT © [Suneel Dhingra](https://github.com/suneeld)

@@ -10,8 +10,8 @@ services:
       - "4000:4000" # Map port 4000 for external access
       
     volumes:
-      - ./salescoachvalue-1dc80d83e3fb.json:/app/salescoachvalue-1dc80d83e3fb.json:ro
+      - ./sales-1dc80d83e3fb.json:/app/sales-1dc80d83e3fb.json:ro
 
     environment:
-      GOOGLE_APPLICATION_CREDENTIALS: "/app/salescoachvalue-1dc80d83e3fb.json"
+
       NODE_ENV: production

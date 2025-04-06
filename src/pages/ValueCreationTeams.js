@@ -1,8 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "../components/Navbar";
+import * as LDClient from "launchdarkly-js-client-sdk"; //launchdarkly sdk//
 import "./ValueCreationTeams.css";
 
 const ValueCreationTeams = () => {
+  const [showExploreFeature, setShowExploreFeature] = useState(false);
+  const [ldClient, setLdClient] = useState(null);
+
+  useEffect(() => {
+    const clientSideID = "67ece628f328ed0982560843"; //LD clientsiteid //
+
+    const browser = (() => {
+      const ua = navigator.userAgent;
+      if (ua.includes("Safari") && !ua.includes("Chrome")) return "Safari";
+      if (ua.includes("Chrome")) return "Chrome";
+      if (ua.includes("Firefox")) return "Firefox";
+      return "Other";
+    })();
+
+    const device = navigator.platform.toLowerCase().includes("mac") ? "Macbook" : "Other";
+
+    const context = {
+      kind: "user",
+      key: `user-${crypto.randomUUID()}`,
+      anonymous: true,
+      browser,
+      device,
+    }; //LD Context //
+
+    console.log("LD context (VCT page):", context);
+
+    const client = LDClient.initialize(clientSideID, context);
+    setLdClient(client);
+
+    client.on("ready", async () => {
+      console.log("LD SDK ready (VCT page)");
+      const flagValue = await client.variation("explorefeature", false); //LD flag explorefeature //
+      console.log("Flag [explorefeature]:", flagValue);
+      setShowExploreFeature(flagValue);
+    });
+  }, []);
+
   return (
     <div className="vct-container">
       <NavBar />
@@ -12,9 +50,22 @@ const ValueCreationTeams = () => {
           <p className="vct-paragraph">
             Build unstoppable Value Creation Teams with the power of app.bestsalescoach.ai. Drive alignment, accountability, and outcomes with proven frameworks and AI-driven tools.
           </p>
-          <button className="vct-cta-button" onClick={() => window.location.href = "/explore-features"}>
-            Explore Features
-          </button>
+
+         
+          {showExploreFeature && (  // Show button only if flag is enabled //
+            <button
+              className="vct-cta-button"
+              onClick={() => {
+                if (ldClient) {
+                  ldClient.track("explorefeaturebutton"); //LD metric explorefeaturebutton tracking //
+                  console.log("Tracked metric: explorefeaturebutton");
+                }
+                window.location.href = "https://app.bestsalescoach.ai";
+              }}
+            >
+              Explore Features
+            </button>
+          )}
         </section>
 
         <section className="vct-section">

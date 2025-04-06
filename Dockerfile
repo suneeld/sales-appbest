@@ -16,6 +16,10 @@ RUN npm install -g tailwindcss ajv
 # Copy the application source code
 COPY . .
 
+#Print useful info for debugging builds
+RUN echo "LaunchDarkly & Grafana SDKs installed:" && \
+    npm list launchdarkly-js-client-sdk @grafana/faro-react @grafana/faro-web-tracing
+
 # Build the React app
 RUN npm run build
 
